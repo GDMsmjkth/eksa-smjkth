@@ -53,8 +53,12 @@ async function submitEvaluation() {
   if (!c.done.length) {
     alert('Sekurang-kurangnya satu kriteria mesti diberikan skor 1 hingga 5.'); return;
   }
-  if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(EKSA_WEB_APP_URL)) {
-    alert('Sila masukkan URL Web App sebenar ke dalam EKSA_WEB_APP_URL dahulu.'); return;
+  if (!EKSA_WEB_APP_URL || EKSA_WEB_APP_URL.includes('TAMPAL_URL')) {
+  alert('URL Web App belum dimasukkan.');
+  return;
+}
+
+alert('URL yang digunakan: ' + EKSA_WEB_APP_URL);
   }
   const snapshot = currentSnapshot();
   if (snapshot !== submittedSnapshot) {
