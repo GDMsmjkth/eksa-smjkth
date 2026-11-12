@@ -56,7 +56,7 @@ async function sendEKSA() {
   if(!/^https:\/\/script\.google\.com\/(?:a\/macros\/[^/]+\/s|macros\/s)\/[^/]+\/exec$/.test(EKSA_WEB_APP_URL)) {
     alert('URL Web App baharu belum ditetapkan dalam fail index.html.');return;
   }
-  if(!confirm('Hantar markah penilaian ini ke Google Sheets?'))return;
+  if(!confirm('Hantar markah penilaian ?'))return;
   eksaSending=true;const btn=$('sendEKSAButton');btn.disabled=true;const oldText=btn.textContent;btn.textContent='⏳ Sedang menghantar dan mengesahkan...';
   try {
     // Hantar dengan form biasa supaya tidak terhalang CORS. Jangan anggap submit sebagai bukti simpan.
@@ -71,7 +71,7 @@ async function sendEKSA() {
       if(result && result.ok){checkAvailable=true;if(result.saved){saved=true;break;}}
     }
     if(saved){
-      alert('✅ Markah penilaian berjaya dihantar dan disimpan dalam Google Sheets!');
+      alert('✅ Markah penilaian berjaya dihantar!');
       eksaPendingId=null;
     }else if(!checkAvailable){
       alert('Penghantaran belum dapat disahkan. Semakan status tidak dapat diakses. Sila semak akses Web App dan rekod dalam Google Sheets sebelum cuba lagi.');
